@@ -70,13 +70,17 @@ public class JdbcProductRepository implements ProductRepository {
     }
 
     @Override
-    public Product insert(Product product) {
+    public Product insert(Product newProduct) {
+        findByName(newProduct.getProductName()).ifPresent(product -> {
+            throw new IllegalStateException("This product name already exists");
+        });
+
         int update = jdbcTemplate.update("INSERT INTO products(product_id, product_name, category, price, description, created_at, updated_at)" +
-                " VALUES (UUID_TO_BIN(:productId), :productName, :category, :price, :description, :createdAt, :updatedAt)", toParamMap(product));
+                " VALUES (UUID_TO_BIN(:productId), :productName, :category, :price, :description, :createdAt, :updatedAt)", toParamMap(newProduct));
         if (update != 1) {
             throw new RuntimeException("Noting was inserted");
         }
-        return product;
+        return newProduct;
     }
 
     @Override
