@@ -29,15 +29,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductByProductId(UUID productId) {
-        return productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException("해당 상품 아이디를 찾을 수 없습니다." + productId));
+    public List<Product> getProductsByProductName(String productName) {
+        return productRepository.findLikeName(productName);
     }
 
     @Override
-    public Product getProductByProductName(String productName) {
-        return productRepository.findByName(productName)
-                .orElseThrow(() -> new RuntimeException("해당 상품 이름을 찾을 수 없습니다." + productName));
+    public Product getProductByProductId(UUID productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("해당 상품 아이디를 찾을 수 없습니다." + productId));
     }
 
     @Override
@@ -53,7 +52,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(UUID productId, String productName, Category category, long price, String description) {
         Product product = getProductByProductId(productId);
-        return productRepository.insert(new Product(product.getProductId(), productName, category, price, description, product.getCreatedAt(), LocalDateTime.now()));
+        return productRepository.update(new Product(product.getProductId(), productName, category, price, description, product.getCreatedAt(), LocalDateTime.now()));
     }
+
+    @Override
+    public void deleteProduct(UUID productId) {
+        productRepository.deleteById(productId);
+    }
+
 
 }

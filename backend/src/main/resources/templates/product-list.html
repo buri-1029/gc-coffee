@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -43,11 +43,16 @@
     }
 
     h1, h3, a, thead {
-        font-family: ghanachoco;
+        font-family: ghanachoco, serif;
     }
 
-    tbody {
-        font-family: GowunDodum-Regular;
+    tbody, td {
+        font-family: GowunDodum-Regular, serif;
+    }
+
+    th, td {
+        text-align: center;
+        vertical-align: middle;
     }
 </style>
 <body>
@@ -55,9 +60,11 @@
     <div class="contentContainer">
         <h1>Grids & Circles</h1>
         <h3>Production Management</h3>
+
         <div class="d-xxl-grid gap-2 d-sm-flex m-lg-3 justify-content-md-end">
-            <a class="btn btn-primary me-md-2" th:href="@{/new-product}" type="button">Add Product</a>
+            <a class="add btn btn-primary me-md-2" th:href="@{/new-product}" type="button">추가</a>
         </div>
+
         <table class="table table-hover table-striped">
             <thead style="font-size: 20px">
             <tr>
@@ -68,9 +75,11 @@
                 <th scope="col">Description</th>
                 <th scope="col">CreatedAt</th>
                 <th scope="col">UpdatedAt</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
-            <tbody style="font-size: 15px">
+            <tbody style="align-content: center; font-size: 15px">
             <tr th:each="product: ${products}" th:object="${product}">
                 <td th:text="*{productId}"></td>
                 <td th:text="*{productName}"></td>
@@ -79,6 +88,16 @@
                 <td th:text="*{description}"></td>
                 <td th:text="*{createdAt}"></td>
                 <td th:text="*{updatedAt}"></td>
+                <td>
+                    <a class="btn btn-small btn-dark" style="font-family: GowunBatang-Bold,serif"
+                       th:href="@{'/update-product/' + *{productId}}"
+                       type="button">수정</a>
+                </td>
+                <td>
+                    <a class="btn btn-small btn-secondary" style="font-family: GowunBatang-Bold,serif"
+                       th:href="@{'/delete-product/' + *{productId}}"
+                       type="button">삭제</a>
+                </td>
             </tr>
             </tbody>
         </table>

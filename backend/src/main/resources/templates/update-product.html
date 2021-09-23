@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -60,25 +60,29 @@
         <h1>Grids & Circles</h1>
         <h3>Production Management</h3>
         <div class="formContainer mt-5">
-            <form method="post" th:action="@{/products}">
+            <form method="post" th:action="@{/update-product}">
+                <input class="form-control" id="productId" name="productId" th:value="${product.productId}"
+                       type="hidden"/>
                 <div class="mb-3">
                     <label class="form-label d-sm-flex m-2" for="productName">Name</label>
-                    <input class="form-control" id="productName" name="productName" type="text">
+                    <input class="form-control" id="productName" name="productName" th:value="${product.productName}"
+                           type="text">
                 </div>
                 <div class="mb-3">
                     <label class="form-label d-sm-flex m-2" for="category">Category</label>
                     <select class="form-select" id="category" name="category">
-                        <option selected>Open this select menu</option>
+                        <option selected th:text="${product.category}" th:value="${product.category}"></option>
                         <option value="COFFEE_BEAN_PACKAGE">COFFEE BEAN PACKAGE</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label d-sm-flex m-2" for="price">Price</label>
-                    <input class="form-control" id="price" name="price" type="number">
+                    <input class="form-control" id="price" name="price" th:value="${product.price}" type="number">
                 </div>
                 <div class="mb-3">
                     <label class="form-label d-sm-flex m-2" for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3"
+                              th:text="${product.description}"></textarea>
                 </div>
                 <button class="btn btn-primary d-sm-flex m-2" type="submit">Submit</button>
             </form>

@@ -12,13 +12,15 @@ public interface ProductRepository {
 
     List<Product> findByCategory(Category category);
 
-    Optional<Product> findById(UUID productId);
+    List<Product> findLikeName(String productName);
 
-    Optional<Product> findByName(String productName);
+    Optional<Product> findById(UUID productId);
 
     Product insert(Product product);
 
     Product update(Product product);
+
+    void deleteById(UUID productId);
 
     void deleteAll();
 

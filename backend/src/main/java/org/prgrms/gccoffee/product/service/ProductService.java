@@ -11,13 +11,15 @@ public interface ProductService {
 
     List<Product> getProductsByCategory(Category category);
 
-    Product getProductByProductId(UUID productId);
+    List<Product> getProductsByProductName(String productName);
 
-    Product getProductByProductName(String productName);
+    Product getProductByProductId(UUID productId);
 
     Product createProduct(String productName, Category category, long price);
 
     Product createProduct(String productName, Category category, long price, String description);
 
     Product updateProduct(UUID productId, String productName, Category category, long price, String description);
+
+    void deleteProduct(UUID productId);
 }
