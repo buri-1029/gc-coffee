@@ -1,6 +1,5 @@
 package org.prgrms.gccoffee.product.repository;
 
-import org.junit.jupiter.api.TestInstance;
 import org.prgrms.gccoffee.product.model.Category;
 import org.prgrms.gccoffee.product.model.Product;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -15,7 +14,6 @@ import static org.prgrms.gccoffee.util.JdbcUtil.toLocalDateTime;
 import static org.prgrms.gccoffee.util.JdbcUtil.toUUID;
 
 @Repository
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JdbcProductRepository implements ProductRepository {
 
     private static final RowMapper<Product> productRowMapper = ((resultSet, i) -> {

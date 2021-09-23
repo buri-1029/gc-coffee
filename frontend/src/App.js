@@ -23,7 +23,6 @@ function App() {
     axios.get('/api/v1/products')
       .then(v => setProducts(v.data),
       e => {
-          alert(e.data);
           console.log(e);
         });
   }, []);
