@@ -62,19 +62,16 @@
     </div>
     <div class="contentContainer">
         <h1>Grids & Circles</h1>
-        <h3>Production Management</h3>
-        <div class="d-xxl-grid gap-2 d-sm-flex m-lg-3 justify-content-md-end">
-            <a class="add btn btn-primary me-md-2" th:href="@{/new-product}" type="button">추가</a>
-        </div>
+        <h3>Order Management</h3>
 
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped mt-5">
             <thead style="font-size: 20px">
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Postcode</th>
+                <th scope="col">Order Status</th>
                 <th scope="col">CreatedAt</th>
                 <th scope="col">UpdatedAt</th>
                 <th scope="col"></th>
@@ -82,23 +79,23 @@
             </tr>
             </thead>
             <tbody style="align-content: center; font-size: 15px">
-            <tr th:each="product: ${products}" th:object="${product}">
-                <td th:text="*{productId}"></td>
-                <td th:text="*{productName}"></td>
-                <td th:text="*{category}"></td>
-                <td th:text="*{price}"></td>
-                <td th:text="*{description}"></td>
+            <tr th:each="order: ${orders}" th:object="${order}">
+                <td th:text="*{orderId}"></td>
+                <td th:text="*{email.getAddress()}"></td>
+                <td th:text="*{address}"></td>
+                <td th:text="*{postcode}"></td>
+                <td th:text="*{orderStatus}"></td>
                 <td th:text="*{createdAt}"></td>
                 <td th:text="*{updatedAt}"></td>
                 <td>
                     <a class="btn btn-small btn-dark" style="font-family: GowunBatang-Bold,serif"
-                       th:href="@{'/update-product/' + *{productId}}"
-                       type="button">수정</a>
+                       th:href="@{'/order-items/' + *{orderId}}"
+                       type="button">상품목록</a>
                 </td>
                 <td>
                     <a class="btn btn-small btn-secondary" style="font-family: GowunBatang-Bold,serif"
-                       th:href="@{'/delete-product/' + *{productId}}"
-                       type="button">삭제</a>
+                       th:href="@{'/status-accept/' + *{orderId}}"
+                       type="button">승인</a>
                 </td>
             </tr>
             </tbody>

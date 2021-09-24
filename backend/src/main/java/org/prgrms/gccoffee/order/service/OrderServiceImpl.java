@@ -21,8 +21,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
+    }
+
+    @Override
     public List<Order> getOrdersByEmail(Email email) {
         return orderRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<OrderItem> getOrderItems(UUID orderId) {
+        return orderRepository.findOrderItem(orderId);
     }
 
     @Override

@@ -35,7 +35,7 @@
 
 > **관리자**
 
-- [x] 상품을 조회, 추가, 변경, 삭제할 수 있습니다.
+- [x] 상품 조회, 추가, 변경, 삭제
 - [x] 고객 주문 목록 조회
 - [ ] 주문 처리 (주문에 대한 승인)
 
@@ -74,7 +74,11 @@
 
 <img src="images/delete.png" alt="delete" style="zoom:25%;" />
 
+##### 주문 목록 조회
 
+<img src="images/order-list.png" alt="order-list" style="zoom:25%;" />
+
+<img src="images/order-items.png" alt="order-items" style="zoom:25%;" />
 
 > **고객 페이지**
 
