@@ -46,7 +46,7 @@
   - 따로 회원을 구분하지 않고 이메일로 고객 구분
 - [ ] 자신의 주문 목록 조회 (주문 상태 & 주문 내역 확인)
 
-![architecture](images/architecture.png)
+![architecture](images/archi.png)
 
 <br/>
 
